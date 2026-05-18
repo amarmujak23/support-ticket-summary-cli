@@ -31,4 +31,4 @@ The app uses fake data so the project is easy to test and safe to share without 
 - Convert the script into a reusable module with functions that return values instead of printing directly
 - Add validation for missing or malformed ticket fields
 - Support CSV input or database-backed ticket data
-- Add unit tests for the counting and filtering functions
+
