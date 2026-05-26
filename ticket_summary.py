@@ -594,7 +594,4 @@ while True:
     elif user_input == 8:
         print("Exiting menu.")
         break
-    else:
-        # Other menu options not shown here
-        pass
                         
