@@ -1,5 +1,3 @@
-# support-ticket-summary-cli
-A beginner Python command-line tool that reads fake support ticket data from a JSON file and prints aggregate ticket metrics.
 # Ticket Summary App
 
 ## What the app does
@@ -31,4 +29,5 @@ The app uses fake data so the project is easy to test and safe to share without 
 - Convert the script into a reusable module with functions that return values instead of printing directly
 - Add validation for missing or malformed ticket fields
 - Support CSV input or database-backed ticket data
-
+- Add unit tests for the counting and filtering functions
+- Future improvement: Add SLA compliance analytics if the data source provides reliable first-response, resolution, and SLA policy fields.

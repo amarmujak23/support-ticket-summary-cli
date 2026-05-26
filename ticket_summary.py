@@ -310,7 +310,7 @@ def tickets_needing_attention():
 
     return attention
 
-
+# Markdown summary export function
 def export_markdown_summary(filename="ticket_snapshot.md"):
     report_time = datetime.now(timezone.utc)
     last_updated_ticket, last_updated_timestamp = get_last_updated_ticket()
@@ -429,36 +429,22 @@ print("===============================")
 for assignee, ticket_id in get_open_ticket_assignees():
     print(f"Assignee: \033[32m{assignee}\033[0m Ticket ID: {ticket_id}")  #Add hospice name
 print()
-print(f"Number of \033[31mHigh Priority\033[0m tickets: \033[31m{high_priority_tickets()}\033[0m")
-print(f"Number of \033[31mEscalated\033[0m tickets: \033[31m{escalated_tickets()}\033[0m")
+
+#print(f"Number of \033[31mHigh Priority\033[0m tickets: \033[31m{high_priority_tickets()}\033[0m")
+#print(f"Number of \033[31mEscalated\033[0m tickets: \033[31m{escalated_tickets()}\033[0m")
 
 
 # ============================================================================
-# REPORTING & ANALYTICS OUTPUT
+# FUTURE ANALYTICS
 # ============================================================================
-
-print("\n" + "="*50)
-print("REPORTING & ANALYTICS")
-print("="*50)
-
-print(f"\nAverage Response Time (All Tickets): {avg_response_time_all_tickets()}")
-
-# SLA Compliance Report
-sla_report = sla_compliance_report()
-print(f"\n\033[36mSLA Compliance Report:\033[0m")
-print(f"  Compliant: \033[32m{sla_report['compliant']}\033[0m")
-print(f"  Breached: \033[31m{sla_report['breached']}\033[0m")
-print(f"  No Response Yet: {sla_report['no_response']}")
-print(f"  Overall Compliance Rate: \033[32m{sla_report['compliance_rate']}\033[0m")
-
-# Agent Performance
-print(f"\n\033[36mAgent Performance Metrics:\033[0m")
-agent_metrics = agent_performance_metrics()
-for agent, metrics in sorted(agent_metrics.items()):
-    print(f"  {agent}:")
-    print(f"    - Total Tickets: {metrics['total']}")
-    print(f"    - Open: {metrics['open']}, Closed: {metrics['closed']}")
-    print(f"    - Avg Resolution Time: {metrics['avg_resolution_hours']} hours")
+# Future analytics are available as commented code and helper functions.
+# These include:
+# - SLA compliance
+# - average response time
+# - agent performance metrics
+# - average resolution time
+#
+# The current main terminal output intentionally omits those sections.
 
 # Hospice Analytics
 print(f"\n\033[36mHospice-Level Analytics:\033[0m")
@@ -594,4 +580,4 @@ while True:
     elif user_input == 8:
         print("Exiting menu.")
         break
-                        
+  
