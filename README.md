@@ -1,16 +1,15 @@
 # Ticket Summary App
 
 ## What the app does
-This app reads a sample ticket dataset from `ticket summary/fake_tickets.json` and prints a support ticket summary to the console. It counts total tickets, open tickets, closed tickets, snoozed tickets, high-priority tickets, and escalated tickets, and it also lists the assignees for all open tickets.
+This app reads a sample ticket dataset from `fake_tickets.json` and prints a support ticket summary to the console. It counts total tickets, open tickets, snoozed tickets, and priority-set tickets, and it also lists the assignees for all open tickets.
 
 ## Why it uses fake data
-The app uses fake data so the project is easy to test and safe to share without exposing real customer information. The sample dataset demonstrates expected ticket fields like `status`, `assignee`, `priority`, `escalated`, and `hospice`, while keeping the data lightweight and controlled.
+The app uses fake data so the project is easy to test and safe to share without exposing real customer information. The sample dataset demonstrates expected ticket fields like `status`, `assignee`, `priority`, and `hospice`, while keeping the data lightweight and controlled.
 
 ## Features
 - Count total tickets in the dataset
-- Count open, closed, and snoozed tickets
-- Count high-priority tickets
-- Count escalated tickets
+- Count open and snoozed tickets
+- Count priority-set tickets
 - Display open ticket assignees alongside ticket IDs
 - Use ANSI color codes for readable console output
 
@@ -30,4 +29,5 @@ The app uses fake data so the project is easy to test and safe to share without 
 - Add validation for missing or malformed ticket fields
 - Support CSV input or database-backed ticket data
 - Add unit tests for the counting and filtering functions
-- Future improvement: Add SLA compliance analytics if the data source provides reliable first-response, resolution, and SLA policy fields.
+- Add SLA compliance analytics if the data source provides reliable first-response, resolution, and SLA policy fields
+- Add agent performance metrics once a workflow data source includes clean resolution and ticket assignment metadata
