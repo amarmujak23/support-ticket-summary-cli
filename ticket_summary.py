@@ -5,6 +5,7 @@ import json
 import os
 from datetime import datetime, timezone
 from collections import Counter, defaultdict
+import time
 
 
 
@@ -117,6 +118,11 @@ def ticket_updated_today(ticket):
     return updated.date() == datetime.now(timezone.utc).date()
 
 
+def format_priority(priority):
+    """Return a user-friendly Priority label."""
+    return "Yes" if priority is True else "No"
+
+
 def get_last_updated_ticket():
     latest_ticket = None
     latest_timestamp = None
@@ -201,7 +207,7 @@ def tickets_needing_attention():
         if status == 'open' and ticket.get('priority') is True:
             attention.append((ticket, 'Priority set'))
         elif status == 'snoozed':
-            attention.append((ticket, 'Dev review'))
+            attention.append((ticket, 'Snoozed / On Hold'))
 
     return attention
 
@@ -221,7 +227,6 @@ def export_markdown_summary(filename="ticket_snapshot.md"):
         for ticket in data
         if ticket.get('status', '').lower() in ('open', 'snoozed') and ticket.get('priority') is True
     )
-    dev_review_count = active_snoozed
     last_updated_line = 'N/A'
     if last_updated_ticket and last_updated_timestamp:
         last_updated_line = f"{last_updated_ticket['ticket_id']} at {format_report_datetime(last_updated_timestamp)}"
@@ -236,7 +241,6 @@ def export_markdown_summary(filename="ticket_snapshot.md"):
     lines.append(f"- Open tickets: {active_open}")
     lines.append(f"- Snoozed / On Hold tickets: {active_snoozed}")
     lines.append(f"- Priority set: {active_priority}")
-    lines.append(f"- Dev review / on-hold reason: {dev_review_count}")
     lines.append(f"- Last updated ticket: {last_updated_line}")
     lines.append('')
     lines.append('## Workload by Assignee')
@@ -335,7 +339,7 @@ print()
 # first-response, resolution, and workflow metadata.
 
 # Hospice Analytics
-print(f"\n\033[36mHospice-Level Analytics:\033[0m")
+print(f"\n\033[36mHospice-Level Snapshot:\033[0m")
 hospice_data = hospice_analytics()
 for hospice, stats in sorted(hospice_data.items()):
     print(f"  {hospice}:")
@@ -357,7 +361,20 @@ while True:
     print("8. Exit")
 
     print()
-    user_input = int(input("Input (1-8): "))
+    try:
+        user_input = int(input("Input (1-8): "))
+    except ValueError:
+        clear()
+        time.sleep(1)
+        print("Invalid input. Please enter a number between 1 and 8.")
+        continue
+
+    if user_input not in range(1, 9):
+        clear()
+        time.sleep(1)
+        print("Invalid input. Please enter a number between 1 and 8.")
+        continue
+
     assignees = set()
     for ticket in data:
         if ticket["assignee"] and ticket["assignee"].lower() != "unassigned":
@@ -380,26 +397,32 @@ while True:
             for ticket in data:
                 if ticket["assignee"] and ticket["assignee"].lower() == name_input.lower():
                     if ticket["status"].lower() in ("open", "snoozed"):
-                        print(f"Ticket ID: {ticket['ticket_id']} - Status: {ticket['status']} - Priority: {ticket['priority']}")
-
+                            print(
+                                f"Ticket ID: {ticket['ticket_id']} - Status: {ticket['status']} - Priority: {format_priority(ticket['priority'])}"
+                            )
             find_other = input("Find other assignees? (y/n): ").strip().lower()
             if find_other != 'y':
-                break
+                clear()
+                break  
 
     #Show only open tickets
     if user_input == 2:
         clear()
         for ticket in data:
             if ticket["status"].lower() == "open":
-                print(f"Ticket ID: {ticket['ticket_id']} - Assignee: {ticket['assignee']} - Priority set: {ticket['priority']}")
+                print(
+                    f"Ticket ID: {ticket['ticket_id']} - Assignee: {ticket['assignee']} - Priority set: {format_priority(ticket['priority'])}"
+                )
         print("There is a total of " + str(open_ticket_count()) + " open tickets.")
 
     #Show only priority-set tickets
     if user_input == 3:
         clear()
         for ticket in data:
-            if ticket["priority"] is True:
-                print(f"Ticket ID: {ticket['ticket_id']} - Assignee: {ticket['assignee']} - Status: {ticket['status']} - Priority set: {ticket['priority']} - {ticket['hospice']}")
+            if ticket.get("priority") is True and ticket.get("status", "").lower() in ("open", "snoozed"):
+                print(
+                    f"Ticket ID: {ticket['ticket_id']} - Assignee: {ticket['assignee']} - Status: {ticket['status']} - Priority set: {format_priority(ticket['priority'])} - {ticket['hospice']}"
+                )
 
     #Show only snoozed tickets for assignees
     if user_input == 4:
@@ -413,7 +436,9 @@ while True:
                 continue
             for ticket in data:
                 if ticket["assignee"] and ticket["assignee"].lower() == name_input.lower() and ticket["status"].lower() == "snoozed":
-                    print(f"Ticket ID: {ticket['ticket_id']} - Status: {ticket['status']} - Priority set: {ticket['priority']}")
+                    print(
+                        f"Ticket ID: {ticket['ticket_id']} - Status: {ticket['status']} - Priority set: {format_priority(ticket['priority'])}"
+                    )
             find_other = input("Find other assignees? (y/n): ").strip().lower()
             if find_other != 'y':
                 break   
@@ -437,7 +462,7 @@ while True:
                     and ticket_updated_today(ticket)
                 ):
                     print(
-                        f"Ticket ID: {ticket['ticket_id']} - Status: {ticket['status']} - Priority set: {ticket['priority']} - Updated At: {ticket['updated_at']}"
+                        f"Ticket ID: {ticket['ticket_id']} - Status: {ticket['status']} - Priority set: {format_priority(ticket['priority'])} - Updated At: {ticket['updated_at']}"
                     )
                     updated_today_count += 1
 
@@ -456,7 +481,9 @@ while True:
             if ticket["status"].lower() == "open":
                 created_at = datetime.fromisoformat(ticket['created_at'].replace('Z', '+00:00'))
                 if (datetime.now(timezone.utc) - created_at).days > 7:
-                        print(f"Ticket ID: {ticket['ticket_id']} - Assignee: {ticket['assignee']} - Status: {ticket['status']} - Created At: {ticket['created_at']} - Priority set: {ticket['priority']}")
+                        print(
+                            f"Ticket ID: {ticket['ticket_id']} - Assignee: {ticket['assignee']} - Status: {ticket['status']} - Created At: {ticket['created_at']} - Priority set: {format_priority(ticket['priority'])}"
+                        )
     if user_input == 7:
         clear()
         filename = export_markdown_summary("ticket_snapshot.md")
@@ -465,4 +492,4 @@ while True:
     elif user_input == 8:
         print("Exiting menu.")
         break
-  
+    
