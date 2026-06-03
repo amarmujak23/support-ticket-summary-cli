@@ -1,3 +1,4 @@
+<img width="1449" height="527" alt="Screenshot 2026-06-03 092546" src="https://github.com/user-attachments/assets/d8c4b20d-45c9-4b2e-9ba7-5896068fe7d1" />
 # Ticket Summary App
 
 ## What the project does
