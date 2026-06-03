@@ -5,11 +5,8 @@
     "assignee": "Amar",
     "priority": true,
     "category": "bug",
-    "escalated": true,
     "hospice": "Lemon Hospice",
     "created_at": "2026-03-19T08:00:00Z",
-    "first_response_at": "2026-03-18T08:15:00Z",
-    "resolved_at": null,
     "updated_at": "2026-06-02T08:15:00Z"
   },
   {
@@ -18,11 +15,8 @@
     "assignee": "Sarah",
     "priority": false,
     "category": "training",
-    "escalated": false,
     "hospice": "Apple Hospice",
     "created_at": "2026-03-19T09:30:00Z",
-    "first_response_at": "2026-05-19T10:00:00Z",
-    "resolved_at": null,
     "updated_at": "2026-05-26T08:15:00Z"
   },
   {
@@ -31,11 +25,8 @@
     "assignee": "Amar",
     "priority": true,
     "category": "access",
-    "escalated": true,
     "hospice": "Potato Hospice",
     "created_at": "2026-04-19T11:00:00Z",
-    "first_response_at": "2026-05-19T12:30:00Z",
-    "resolved_at": null,
     "updated_at": "2026-05-26T08:15:00Z"
   },
   {
@@ -44,11 +35,8 @@
     "assignee": "Mike",
     "priority": false,
     "category": "question",
-    "escalated": false,
     "hospice": "Apple Hospice",
     "created_at": "2026-05-18T15:00:00Z",
-    "first_response_at": "2026-05-18T16:45:00Z",
-    "resolved_at": null,
     "updated_at": "2026-06-02T08:15:00Z"
   },
   {
@@ -57,11 +45,8 @@
     "assignee": "Unassigned",
     "priority": false,
     "category": "bug",
-    "escalated": true,
     "hospice": "Potato Hospice",
     "created_at": "2026-05-17T10:00:00Z",
-    "first_response_at": "2026-05-17T14:00:00Z",
-    "resolved_at": "2026-05-18T09:00:00Z",
     "updated_at": "2026-06-02T09:00:00Z"
   },
   {
@@ -70,11 +55,8 @@
     "assignee": "Mike",
     "priority": true,
     "category": "billing",
-    "escalated": true,
     "hospice": "Lemon Hospice",
     "created_at": "2026-05-16T13:00:00Z",
-    "first_response_at": "2026-05-16T14:30:00Z",
-    "resolved_at": "2026-05-17T10:00:00Z",
     "updated_at": "2026-05-17T10:00:00Z"
   },
   {
@@ -83,11 +65,8 @@
     "assignee": "Sarah",
     "priority": true,
     "category": "access",
-    "escalated": false,
     "hospice": "Apple Hospice",
     "created_at": "2026-05-15T08:00:00Z",
-    "first_response_at": "2026-05-15T09:15:00Z",
-    "resolved_at": "2026-05-16T11:00:00Z",
     "updated_at": "2026-06-02T08:15:00Z"
   },
   {
@@ -96,11 +75,8 @@
     "assignee": "Mike",
     "priority": true,
     "category": "access",
-    "escalated": true,
     "hospice": "Potato Hospice",
     "created_at": "2026-05-18T07:00:00Z",
-    "first_response_at": "2026-05-18T08:30:00Z",
-    "resolved_at": null,
     "updated_at": "2026-06-02T08:15:00Z"
   },
   {
@@ -109,11 +85,8 @@
     "assignee": "Mike",
     "priority": false,
     "category": "access",
-    "escalated": false,
     "hospice": "Potato Hospice",
     "created_at": "2026-05-17T14:00:00Z",
-    "first_response_at": "2026-05-17T15:30:00Z",
-    "resolved_at": null,
     "updated_at": "2026-05-17T15:30:00Z"
   },
   {
@@ -122,28 +95,20 @@
     "assignee": "Unassigned",
     "priority": false,
     "category": "bug",
-    "escalated": true,
     "hospice": "Lemon Hospice",
     "created_at": "2026-05-16T10:00:00Z",
-    "first_response_at": null,
-    "resolved_at": null,
     "updated_at": "2026-05-26T08:15:00Z"
   },
-
   {
     "ticket_id": "TCK-1011",
     "status": "snoozed",
     "assignee": "Amar",
     "priority": false,
     "category": "bug",
-    "escalated": true,
     "hospice": "Lemon Hospice",
     "created_at": "2026-05-16T10:00:00Z",
-    "first_response_at": null,
-    "resolved_at": null,
     "updated_at": "2026-06-02T08:15:00Z"
   }
-
-
-
 ]
+
+

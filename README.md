@@ -1,4 +1,3 @@
-<img width="1449" height="527" alt="Screenshot 2026-06-03 092546" src="https://github.com/user-attachments/assets/d8c4b20d-45c9-4b2e-9ba7-5896068fe7d1" />
 # Ticket Summary App
 
 ## What the project does
@@ -32,7 +31,7 @@ The Flask API server must be running before you start the CLI.
 
 1. Open a terminal and navigate to the project root:
    ```bash
-   cd support-ticket-summary-cli
+   cd "c:\Users\mujak\OneDrive\Desktop\Coding\ticket summary"
    ```
 
 2. Install dependencies (if not already done):
@@ -63,7 +62,7 @@ The Flask mock API server must be running before you start the CLI (see instruct
 
 1. In a separate terminal, navigate to the project folder:
    ```bash
-   cd support-ticket-summary-cli
+   cd "c:\Users\mujak\OneDrive\Desktop\Coding\ticket summary"
    ```
 
 2. Run the CLI app:
@@ -95,7 +94,7 @@ From the CLI menu, select option `7` to generate and export the current ticket s
 - Tickets requiring attention
 
 ### Sample Report
-See [`examples_folder/ticket_snapshot_sample.md`](examples/ticket_snapshot_sample.md) for an example of what the generated report looks like.
+See [`examples/ticket_snapshot_sample.md`](examples/ticket_snapshot_sample.md) for an example of what the generated report looks like.
 
 ---
 
