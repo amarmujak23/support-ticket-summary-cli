@@ -1,25 +1,37 @@
-# Version 3.0 - 2026-05-26
+# Version 4.0 - 2026-06-02
 # Support Ticket Snapshot CLI - Active Ticket Reporting
+# Fetches tickets from Flask mock API at http://127.0.0.1:5000/tickets
 
 import json
 import os
+import requests
 from datetime import datetime, timezone
 from collections import Counter, defaultdict
 import time
 
+API_URL = "http://127.0.0.1:5000/tickets"
 
+def get_tickets_from_api():
+    """Fetch tickets from the Flask mock API."""
+    try:
+        response = requests.get(API_URL, timeout=5)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.ConnectionError:
+        print("Error: Cannot connect to Flask server at http://127.0.0.1:5000")
+        print("Please run 'python server.py' first.")
+        exit(1)
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching tickets: {e}")
+        exit(1)
+
+data = get_tickets_from_api()
 
 def clear():
     # 'nt' is for Windows, others are usually 'posix' (Linux, macOS)
     os.system('cls' if os.name == 'nt' else 'clear')
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_FILE = os.path.join(BASE_DIR, 'fake_tickets.json')
-
-with open(DATA_FILE, 'r', encoding='utf-8') as file:
-    data = json.load(file)
-
-# This tool reads a local fake ticket dataset to generate an active workload summary.
+# This tool reads ticket data from the local Flask mock API to generate an active workload summary.
 
 #Returns the total number of open and snoozed tickets
 
@@ -115,7 +127,7 @@ def ticket_updated_today(ticket):
     except ValueError:
         return False
 
-    return updated.date() == datetime.now(timezone.utc).date()
+    return updated.date() == datetime.now().date()
 
 
 def format_priority(priority):
@@ -355,7 +367,7 @@ while True:
     print("2. Show only open tickets")
     print("3. Show only priority-set tickets")
     print("4. Show only snoozed tickets for assignees")
-    print("5. Show open tickets updated today")
+    print("5. Show open or snoozed tickets updated today")
     print("6. Show tickets older than 7 days")
     print("7. Export markdown summary")
     print("8. Exit")
@@ -458,7 +470,7 @@ while True:
                 if (
                     ticket["assignee"]
                     and ticket["assignee"].lower() == name_input.lower()
-                    and ticket["status"].lower() == "open"
+                    and ticket["status"].lower() in ("open", "snoozed")
                     and ticket_updated_today(ticket)
                 ):
                     print(
@@ -467,7 +479,7 @@ while True:
                     updated_today_count += 1
 
             if updated_today_count == 0:
-                print("No open tickets updated today for that assignee.")
+                print("No open or snoozed tickets updated today for that assignee.")
 
             find_other = input("Find other assignees? (y/n): ").strip().lower()
             if find_other != 'y':

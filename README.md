@@ -1,33 +1,42 @@
 # Ticket Summary App
 
-## What the app does
-This app reads a sample ticket dataset from `fake_tickets.json` and prints a support ticket summary to the console. It counts total tickets, open tickets, snoozed tickets, and priority-set tickets, and it also lists the assignees for all open tickets.
+## What the project does
+This project provides a small ticket summary system with two separate components:
+- `server.py` runs a local Flask mock API and serves ticket data from `fake_tickets.json`
+- `ticket_summary.py` runs a CLI app that fetches tickets from the mock API and displays ticket analytics
 
-## Why it uses fake data
-The app uses fake data so the project is easy to test and safe to share without exposing real customer information. The sample dataset demonstrates expected ticket fields like `status`, `assignee`, `priority`, and `hospice`, while keeping the data lightweight and controlled.
+## Fake data only
+The project uses only fake data stored in `fake_tickets.json`. It is designed for testing and demonstration, not for production use.
 
-## Features
-- Count total tickets in the dataset
-- Count open and snoozed tickets
-- Count priority-set tickets
-- Display open ticket assignees alongside ticket IDs
-- Use ANSI color codes for readable console output
-
-## How to run
+## How to run the mock API
 1. Open a terminal and navigate to the project root:
    ```bash
-   cd "c:\Users\Amar Mujak\OneDrive\Desktop\Code"
+   cd "c:\Users\mujak\OneDrive\Desktop\Coding\ticket summary"
    ```
-2. Run the script:
+2. Install dependencies:
    ```bash
-   python "ticket summary\ticket_summary.py"
+   pip install -r requirements.txt
+   ```
+3. Start the Flask API server:
+   ```bash
+   python server.py
    ```
 
-## Future improvements
-- Add command-line arguments to filter by ticket status, hospice, or assignee
-- Convert the script into a reusable module with functions that return values instead of printing directly
-- Add validation for missing or malformed ticket fields
-- Support CSV input or database-backed ticket data
-- Add unit tests for the counting and filtering functions
-- Add SLA compliance analytics if the data source provides reliable first-response, resolution, and SLA policy fields
-- Add agent performance metrics once a workflow data source includes clean resolution and ticket assignment metadata
+## How to run the CLI
+1. In a separate terminal, navigate to the same project folder:
+   ```bash
+   cd "c:\Users\mujak\OneDrive\Desktop\Coding\ticket summary"
+   ```
+2. Run the CLI app:
+   ```bash
+   python ticket_summary.py
+   ```
+
+## What `/tickets` does
+The `/tickets` endpoint is served by `server.py` and returns the full ticket dataset from `fake_tickets.json` as JSON. The CLI fetches this endpoint to load ticket data for reporting.
+
+## How to export the Markdown report
+From the CLI menu, choose option `7` to export the current ticket summary to `ticket_snapshot.md`.
+
+## Future goal
+Possible approved Intercom metadata integration could be added later to enrich ticket details and support analytics using real customer support metadata.

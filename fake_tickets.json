@@ -10,11 +10,11 @@
     "created_at": "2026-03-19T08:00:00Z",
     "first_response_at": "2026-03-18T08:15:00Z",
     "resolved_at": null,
-    "updated_at": "2026-05-26T08:15:00Z"
+    "updated_at": "2026-06-02T08:15:00Z"
   },
   {
     "ticket_id": "TCK-1002",
-    "status": "open",
+    "status": "snoozed",
     "assignee": "Sarah",
     "priority": false,
     "category": "training",
@@ -40,7 +40,7 @@
   },
   {
     "ticket_id": "TCK-1004",
-    "status": "open",
+    "status": "snoozed",
     "assignee": "Mike",
     "priority": false,
     "category": "question",
@@ -49,7 +49,7 @@
     "created_at": "2026-05-18T15:00:00Z",
     "first_response_at": "2026-05-18T16:45:00Z",
     "resolved_at": null,
-    "updated_at": "2026-05-18T16:45:00Z"
+    "updated_at": "2026-06-02T08:15:00Z"
   },
   {
     "ticket_id": "TCK-1005",
@@ -62,7 +62,7 @@
     "created_at": "2026-05-17T10:00:00Z",
     "first_response_at": "2026-05-17T14:00:00Z",
     "resolved_at": "2026-05-18T09:00:00Z",
-    "updated_at": "2026-05-18T09:00:00Z"
+    "updated_at": "2026-06-02T09:00:00Z"
   },
   {
     "ticket_id": "TCK-1006",
@@ -88,7 +88,7 @@
     "created_at": "2026-05-15T08:00:00Z",
     "first_response_at": "2026-05-15T09:15:00Z",
     "resolved_at": "2026-05-16T11:00:00Z",
-    "updated_at": "2026-05-26T08:15:00Z"
+    "updated_at": "2026-06-02T08:15:00Z"
   },
   {
     "ticket_id": "TCK-1008",
@@ -101,7 +101,7 @@
     "created_at": "2026-05-18T07:00:00Z",
     "first_response_at": "2026-05-18T08:30:00Z",
     "resolved_at": null,
-    "updated_at": "2026-05-18T08:30:00Z"
+    "updated_at": "2026-06-02T08:15:00Z"
   },
   {
     "ticket_id": "TCK-1009",
@@ -128,5 +128,22 @@
     "first_response_at": null,
     "resolved_at": null,
     "updated_at": "2026-05-26T08:15:00Z"
+  },
+
+  {
+    "ticket_id": "TCK-1011",
+    "status": "snoozed",
+    "assignee": "Amar",
+    "priority": false,
+    "category": "bug",
+    "escalated": true,
+    "hospice": "Lemon Hospice",
+    "created_at": "2026-05-16T10:00:00Z",
+    "first_response_at": null,
+    "resolved_at": null,
+    "updated_at": "2026-06-02T08:15:00Z"
   }
+
+
+
 ]
