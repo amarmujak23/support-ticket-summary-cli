@@ -95,7 +95,7 @@ From the CLI menu, select option `7` to generate and export the current ticket s
 - Tickets requiring attention
 
 ### Sample Report
-See [`examples/ticket_snapshot_sample.md`](examples/ticket_snapshot_sample.md) for an example of what the generated report looks like.
+See [`examples_folder/ticket_snapshot_sample.md`](examples/ticket_snapshot_sample.md) for an example of what the generated report looks like.
 
 ---
 
