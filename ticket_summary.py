@@ -18,11 +18,12 @@ def get_tickets_from_api():
         response.raise_for_status()
         return response.json()
     except requests.exceptions.ConnectionError:
-        print("Error: Cannot connect to Flask server at http://127.0.0.1:5000")
-        print("Please run 'python server.py' first.")
+        print("\nCould not connect to the mock API.")
+        print("Please start the server with: python server.py")
+        print("Then run this CLI again.\n")
         exit(1)
     except requests.exceptions.RequestException as e:
-        print(f"Error fetching tickets: {e}")
+        print(f"\nError fetching tickets: {e}\n")
         exit(1)
 
 data = get_tickets_from_api()
