@@ -32,7 +32,7 @@ The Flask API server must be running before you start the CLI.
 
 1. Open a terminal and navigate to the project root:
    ```bash
-   cd "c:\Users\mujak\OneDrive\Desktop\Coding\ticket summary"
+   cd cd support-ticket-summary-cli
    ```
 
 2. Install dependencies (if not already done):
@@ -63,7 +63,7 @@ The Flask mock API server must be running before you start the CLI (see instruct
 
 1. In a separate terminal, navigate to the project folder:
    ```bash
-   cd "c:\Users\mujak\OneDrive\Desktop\Coding\ticket summary"
+   cd support-ticket-summary-cli
    ```
 
 2. Run the CLI app:
