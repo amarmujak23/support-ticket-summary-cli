@@ -63,7 +63,7 @@ The Flask mock API server must be running before you start the CLI (see instruct
 
 1. In a separate terminal, navigate to the project folder:
    ```bash
-   cd support-ticket-summary-cli
+   cd support-ticket-summary-cli / server.py
    ```
 
 2. Run the CLI app:
@@ -95,7 +95,7 @@ From the CLI menu, select option `7` to generate and export the current ticket s
 - Tickets requiring attention
 
 ### Sample Report
-See [`examples/ticket_snapshot_sample.md`](examples/ticket_snapshot_sample.md) for an example of what the generated report looks like.
+See [`examples_folder/ticket_snapshot_sample.md`](examples/ticket_snapshot_sample.md) for an example of what the generated report looks like.
 
 ---
 
