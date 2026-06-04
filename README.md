@@ -63,7 +63,7 @@ The Flask mock API server must be running before you start the CLI (see instruct
 
 1. In a separate terminal, navigate to the project folder:
    ```bash
-   cd support-ticket-summary-cli / server.py
+   cd support-ticket-summary-cli 
    ```
 
 2. Run the CLI app:
