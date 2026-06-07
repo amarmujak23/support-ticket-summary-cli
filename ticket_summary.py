@@ -118,7 +118,7 @@ def format_report_datetime(dt):
 
 
 def ticket_updated_today(ticket):
-    """Return True when ticket.updated_at is today."""
+    """Return True when ticket.updated_at is today in UTC."""
     updated_at = ticket.get('updated_at')
     if not updated_at:
         return False
@@ -128,7 +128,7 @@ def ticket_updated_today(ticket):
     except ValueError:
         return False
 
-    return updated.date() == datetime.now().date()
+    return updated.date() == datetime.now(timezone.utc).date()
 
 
 def format_priority(priority):
